@@ -1,10 +1,10 @@
-# 🚀 Leetcode newb
+# Leetcode Resources
+- [Leetcode DSA Course](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/)
+- [Neetcode DSA for Begineers](https://neetcode.io/courses/dsa-for-beginners/0)
+- [Neetcode Core Algorithm Implementation](https://neetcode.io/practice?subpage=practice)
+- [Neetcode Roadmap](https://neetcode.io/roadmap)
 
-## About This Repo
-
-My first foray into data structures and algorithms so I'll use this repo to track my progress as I'm learning and working through coding problems.
-
-I'm currently following [LeetCode's Interview Crash Course: Data Structures and Algorithms](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/), which provides a structured path for learning fundamental concepts and problem-solving patterns.
-
-## Using the flashcards
-Feel free to save to your computer the .mochi files and then import them into [Mochi Cards](https://mochi.cards/)
+# Current plan
+- Race through the Neetcode DSA for Begineers video talking notes using the Custom GPT called Flashcard Generator by Mark Nagelberg
+- Implement all core algorithms from Neetcode from the "Practice" section
+- Start going through the Neetcode Roadmap solving the associated Leetcodes
