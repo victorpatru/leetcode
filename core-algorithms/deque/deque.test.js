@@ -1,5 +1,5 @@
 // Import the solution
-const { Deque } = require('./deque.solution.js');
+const { Deque } = require('./deque.template.js');
 
 // Test helper function
 function runTest(testName, operations, expected) {
