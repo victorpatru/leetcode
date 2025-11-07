@@ -16,8 +16,6 @@ package-lock.json
 .DS_Store
 Thumbs.db
 
-# Test files (if you add them later)
-*.test.js
 coverage/
 
 # Environment
