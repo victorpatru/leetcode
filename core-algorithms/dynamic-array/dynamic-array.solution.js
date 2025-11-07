@@ -87,3 +87,9 @@ class DynamicArray {
         return this.capacity;
     }
 }
+
+// Export for testing
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { DynamicArray };
+}
+
