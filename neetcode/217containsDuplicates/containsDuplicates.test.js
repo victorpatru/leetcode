@@ -1,5 +1,5 @@
 // Import the solutions
-const { SolutionHashSet, SolutionHashSetLength } = require('./containsDuplicates.solution.js');
+const { SolutionHashSet, SolutionHashSetLength } = require('./containsDuplicates.template.js');
 
 // Test helper function
 function runTest(testName, input, expected, solution) {
