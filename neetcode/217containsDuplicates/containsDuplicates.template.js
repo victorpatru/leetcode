@@ -10,6 +10,10 @@ class SolutionHashSet {
         // TODO: implement
     }
 }
+/**
+ * Time Complexity: TODO:
+ * Space Complexity: TODO:
+ */
 
 /**
  * Solution 2: Using hash set length comparison
@@ -23,6 +27,11 @@ class SolutionHashSetLength {
         // TODO: implement
     }
 }
+
+/**
+ * Time Complexity: TODO:
+ * Space Complexity: TODO:
+ */
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
