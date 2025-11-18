@@ -1,5 +1,5 @@
 // Import the solutions
-const { Solution } = require('./groupAnagrams.solution.js');
+const { Solution } = require('./groupAnagrams.template.js');
 
 // Test helper function
 function arraysEqual(arr1, arr2) {
