@@ -16,6 +16,12 @@ class SolutionHashSet {
     }
 }
 
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+
+
 // Solution 2: Using hash set length comparison
 class SolutionHashSetLength {
     /**
@@ -26,6 +32,12 @@ class SolutionHashSetLength {
         return new Set(nums).size < nums.length;
     }
 }
+
+
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
