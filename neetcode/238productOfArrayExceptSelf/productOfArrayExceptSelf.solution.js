@@ -9,14 +9,14 @@ class Solution {
 
         // 1) Left products (prefix)
         let left = 1;
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < res.length; i++) {
             res[i] = left;      // everything to the LEFT of i
             left *= nums[i];
         }
 
         // 2) Right products (postfix)
         let right = 1;
-        for (let i = n - 1; i >= 0; i--) {
+        for (let i = res.length - 1; i >= 0; i--) {
             res[i] *= right;    // left * right of i
             right *= nums[i];
         }
