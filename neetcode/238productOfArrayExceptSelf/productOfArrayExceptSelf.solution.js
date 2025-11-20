@@ -5,22 +5,18 @@ class Solution {
      * @return {number[]}
      */
     productExceptSelf(nums) {
-        const res = new Array(nums.length);
+        const n = nums.length;
+        const res = new Array(n).fill(1);
 
-        // 1) Left products (prefix)
-        let left = 1;
-        for (let i = 0; i < res.length; i++) {
-            res[i] = left;      // everything to the LEFT of i
-            left *= nums[i];
+        for (let i = 1; i < n; i++) {
+            res[i] = res[i - 1] * nums[i - 1];
         }
 
-        // 2) Right products (postfix)
-        let right = 1;
-        for (let i = res.length - 1; i >= 0; i--) {
-            res[i] *= right;    // left * right of i
-            right *= nums[i];
+        let postfix = 1;
+        for (let i = n - 1; i >= 0; i--) {
+            res[i] *= postfix;
+            postfix *= nums[i];
         }
-
         return res;
     }
 }
