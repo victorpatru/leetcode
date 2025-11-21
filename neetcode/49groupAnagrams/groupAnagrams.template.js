@@ -21,3 +21,4 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports = { Solution };
 }
 
+// Hint: Create a key from the character count array (by joining it)
