@@ -1,6 +1,6 @@
 class ListNode {
-    constructor(val, nextNode = null) {
-        this.val = val
+    constructor(value, nextNode = null) {
+        this.value = value
         // TODO: implement
     }
 }
@@ -19,18 +19,18 @@ class LinkedList {
     }
 
     /**
-     * @param {number} val
+     * @param {number} value
      * @return {void}
      */
-    insertHead(val) {
+    insertHead(value) {
         // TODO: implement
     }
 
     /**
-     * @param {number} val
+     * @param {number} value
      * @return {void}
      */
-    insertTail(val) {
+    insertTail(value) {
         // TODO: implement
     }
 
