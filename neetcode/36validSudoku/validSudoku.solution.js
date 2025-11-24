@@ -16,10 +16,9 @@ class Solution {
                 const squareKey = `${Math.floor(r / 3)},${Math.floor(c / 3)}`;
 
                 if (
-                    (rows.get(r) && rows.get(r).has(board[r][c])) ||
-                    (cols.get(c) && cols.get(c).has(board[r][c])) ||
-                    (squares.get(squareKey) &&
-                        squares.get(squareKey).has(board[r][c]))
+                    (rows.get(r)?.has(board[r][c])) ||
+                    (cols.get(c)?.has(board[r][c])) ||
+                    (squares.get(squareKey)?.has(board[r][c]))
                 ) {
                     return false;
                 }
