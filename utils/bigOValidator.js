@@ -27,6 +27,34 @@ function normalizeBigO(complexity) {
 
 /**
  * Validate Big O complexity by comparing user answer with correct answer
+ * Returns validation result object without console output (for Ink renderer)
+ * 
+ * @param {string} solutionName - Name of the solution being validated
+ * @param {string} userAnswer - User's Big O notation answer
+ * @param {string} correctAnswer - The correct Big O notation answer
+ * @param {string} type - Type of complexity being validated ('Time' or 'Space')
+ * @returns {Object} Validation result object
+ */
+function validateComplexityResult(solutionName, userAnswer, correctAnswer, type) {
+    const normalizedUser = normalizeBigO(userAnswer);
+    const normalizedCorrect = normalizeBigO(correctAnswer);
+
+    const isCorrect = normalizedUser === normalizedCorrect;
+    const isFilled = !!userAnswer;
+
+    return {
+        solutionName,
+        type,
+        userAnswer: userAnswer || '',
+        correctAnswer,
+        isCorrect: isCorrect && isFilled,
+        isFilled
+    };
+}
+
+/**
+ * Validate Big O complexity by comparing user answer with correct answer
+ * Legacy function that logs to console (for backward compatibility)
  * 
  * @param {string} solutionName - Name of the solution being validated
  * @param {string} userAnswer - User's Big O notation answer
@@ -35,29 +63,27 @@ function normalizeBigO(complexity) {
  * @returns {boolean} True if the answer is correct and filled in, false otherwise
  */
 function validateComplexity(solutionName, userAnswer, correctAnswer, type) {
-    const normalizedUser = normalizeBigO(userAnswer);
-    const normalizedCorrect = normalizeBigO(correctAnswer);
-
-    const isCorrect = normalizedUser === normalizedCorrect;
+    const result = validateComplexityResult(solutionName, userAnswer, correctAnswer, type);
 
     console.log(`\n${'─'.repeat(50)}`);
-    console.log(`${solutionName} - ${type} Complexity:`);
-    console.log(`  Your answer:    ${userAnswer || '(not filled in)'}`);
-    console.log(`  Correct answer: ${correctAnswer}`);
+    console.log(`${result.solutionName} - ${result.type} Complexity:`);
+    console.log(`  Your answer:    ${result.userAnswer || '(not filled in)'}`);
+    console.log(`  Correct answer: ${result.correctAnswer}`);
 
-    if (isCorrect && userAnswer) {
+    if (result.isCorrect) {
         console.log(`  ✓ Correct!`);
-    } else if (!userAnswer) {
+    } else if (!result.isFilled) {
         console.log(`  ⚠ Not filled in`);
     } else {
         console.log(`  ✗ Incorrect`);
     }
 
-    return isCorrect && userAnswer;
+    return result.isCorrect;
 }
 
 module.exports = {
     normalizeBigO,
-    validateComplexity
+    validateComplexity,
+    validateComplexityResult
 };
 
