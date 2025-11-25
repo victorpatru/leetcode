@@ -33,6 +33,7 @@ class Solution {
      * @return {number[]}
      */
     topKFrequent(nums, k) {
+        //#region Hints (click to expand)
         // 1. Count how many times each number appears
 
         // 2. Create bucket array where index = frequency
@@ -40,6 +41,7 @@ class Solution {
         // 3. Put each number into the bucket matching its frequency
 
         // 4. Traverse buckets from highest frequency downward and collect k most frequent numbers
+        //#endregion
     }
 }
 
