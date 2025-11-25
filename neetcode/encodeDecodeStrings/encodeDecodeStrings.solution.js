@@ -35,8 +35,8 @@ class Solution {
 }
 
 /**
- * Time Complexity: O(m) for each encode() and decode() function calls.
- * Space Complexity: O(m+n) for each encode() and decode() function calls.
+ * Time Complexity: O(n) for each encode() and decode() function calls.
+ * Space Complexity: O(n+m) for each encode() and decode() function calls.
  * Where m is the sum of lengths of all the strings and n is the number of strings.
  */
 
