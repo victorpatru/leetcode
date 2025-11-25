@@ -2,7 +2,8 @@
 const { Solution, SOLUTION_COMPLEXITY } = require('./groupAnagrams.template.js');
 
 // Import shared Big O validation utilities
-const { validateComplexity } = require('../../utils/bigOValidator.js');
+const { validateComplexityResult } = require('../../utils/bigOValidator.js');
+const { renderTestResults } = require('../../utils/testRenderer.js');
 
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
@@ -36,152 +37,169 @@ function arraysEqual(arr1, arr2) {
 }
 
 function runTest(testName, strs, expected, solution) {
-    const result = solution.groupAnagrams(strs);
-
-    const passed = arraysEqual(result, expected);
-    console.log(`${passed ? '✓' : '✗'} ${testName}`);
-    if (!passed) {
-        console.log(`  Input:    strs = ${JSON.stringify(strs)}`);
-        console.log(`  Expected: ${JSON.stringify(expected)}`);
-        console.log(`  Got:      ${JSON.stringify(result)}`);
+    let result, passed;
+    let error = null;
+    
+    try {
+        result = solution.groupAnagrams(strs);
+        passed = arraysEqual(result, expected);
+        
+        if (!passed) {
+            error = {
+                Input: `strs = ${JSON.stringify(strs)}`,
+                Expected: JSON.stringify(expected),
+                Got: JSON.stringify(result)
+            };
+        }
+    } catch (e) {
+        passed = false;
+        error = {
+            Input: `strs = ${JSON.stringify(strs)}`,
+            Expected: JSON.stringify(expected),
+            Error: e.message,
+            Stack: e.stack
+        };
     }
-    return passed;
+    
+    return {
+        name: testName,
+        passed,
+        error
+    };
 }
 
 // Run all tests
-console.log('Running Group Anagrams Tests...\n');
-console.log('Testing Solution (character frequency counting approach):\n');
+async function main() {
+    const solution = new Solution();
+    const testResults = [];
 
-const solution = new Solution();
-let passed = 0;
-let failed = 0;
+    // Test 1: Example 1 from problem description
+    testResults.push(runTest(
+        'Test 1: example 1',
+        ["act", "pots", "tops", "cat", "stop", "hat"],
+        [["hat"], ["act", "cat"], ["stop", "pots", "tops"]],
+        solution
+    ));
 
-// Test 1: Example 1 from problem description
-if (runTest(
-    'Test 1: example 1',
-    ["act", "pots", "tops", "cat", "stop", "hat"],
-    [["hat"], ["act", "cat"], ["stop", "pots", "tops"]],
-    solution
-)) passed++; else failed++;
+    // Test 2: Example 2 from problem description
+    testResults.push(runTest(
+        'Test 2: example 2 - single character',
+        ["x"],
+        [["x"]],
+        solution
+    ));
 
-// Test 2: Example 2 from problem description
-if (runTest(
-    'Test 2: example 2 - single character',
-    ["x"],
-    [["x"]],
-    solution
-)) passed++; else failed++;
+    // Test 3: Example 3 from problem description
+    testResults.push(runTest(
+        'Test 3: example 3 - empty string',
+        [""],
+        [[""]],
+        solution
+    ));
 
-// Test 3: Example 3 from problem description
-if (runTest(
-    'Test 3: example 3 - empty string',
-    [""],
-    [[""]],
-    solution
-)) passed++; else failed++;
+    // Test 4: Multiple groups
+    testResults.push(runTest(
+        'Test 4: multiple groups',
+        ["eat", "tea", "tan", "ate", "nat", "bat"],
+        [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]],
+        solution
+    ));
 
-// Test 4: Multiple groups
-if (runTest(
-    'Test 4: multiple groups',
-    ["eat", "tea", "tan", "ate", "nat", "bat"],
-    [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]],
-    solution
-)) passed++; else failed++;
+    // Test 5: All anagrams of each other
+    testResults.push(runTest(
+        'Test 5: all anagrams of each other',
+        ["abc", "bca", "cab"],
+        [["abc", "bca", "cab"]],
+        solution
+    ));
 
-// Test 5: All anagrams of each other
-if (runTest(
-    'Test 5: all anagrams of each other',
-    ["abc", "bca", "cab"],
-    [["abc", "bca", "cab"]],
-    solution
-)) passed++; else failed++;
+    // Test 6: No anagrams
+    testResults.push(runTest(
+        'Test 6: no anagrams',
+        ["abc", "def", "ghi"],
+        [["abc"], ["def"], ["ghi"]],
+        solution
+    ));
 
-// Test 6: No anagrams
-if (runTest(
-    'Test 6: no anagrams',
-    ["abc", "def", "ghi"],
-    [["abc"], ["def"], ["ghi"]],
-    solution
-)) passed++; else failed++;
+    // Test 7: Empty array
+    testResults.push(runTest(
+        'Test 7: empty array',
+        [],
+        [],
+        solution
+    ));
 
-// Test 7: Empty array
-if (runTest(
-    'Test 7: empty array',
-    [],
-    [],
-    solution
-)) passed++; else failed++;
+    // Test 8: Single character strings
+    testResults.push(runTest(
+        'Test 8: single character strings',
+        ["a", "b", "c"],
+        [["a"], ["b"], ["c"]],
+        solution
+    ));
 
-// Test 8: Single character strings
-if (runTest(
-    'Test 8: single character strings',
-    ["a", "b", "c"],
-    [["a"], ["b"], ["c"]],
-    solution
-)) passed++; else failed++;
+    // Test 9: Repeated characters
+    testResults.push(runTest(
+        'Test 9: repeated characters',
+        ["aab", "aba", "baa", "abb"],
+        [["abb"], ["aab", "aba", "baa"]],
+        solution
+    ));
 
-// Test 9: Repeated characters
-if (runTest(
-    'Test 9: repeated characters',
-    ["aab", "aba", "baa", "abb"],
-    [["abb"], ["aab", "aba", "baa"]],
-    solution
-)) passed++; else failed++;
+    // Test 10: Long strings
+    testResults.push(runTest(
+        'Test 10: long strings',
+        ["listen", "silent", "enlist"],
+        [["listen", "silent", "enlist"]],
+        solution
+    ));
 
-// Test 10: Long strings
-if (runTest(
-    'Test 10: long strings',
-    ["listen", "silent", "enlist"],
-    [["listen", "silent", "enlist"]],
-    solution
-)) passed++; else failed++;
+    // Big O Complexity Validation
+    const complexityValidations = [];
+    
+    complexityValidations.push(validateComplexityResult(
+        'Solution',
+        SOLUTION_COMPLEXITY.time,
+        CORRECT_COMPLEXITY.solution.time,
+        'Time'
+    ));
 
-// Summary
-console.log(`\n${'='.repeat(50)}`);
-console.log(`Tests Passed: ${passed}/${passed + failed}`);
-console.log(`Tests Failed: ${failed}/${passed + failed}`);
+    complexityValidations.push(validateComplexityResult(
+        'Solution',
+        SOLUTION_COMPLEXITY.space,
+        CORRECT_COMPLEXITY.solution.space,
+        'Space'
+    ));
 
-// Big O Complexity Validation
-console.log(`\n${'='.repeat(50)}`);
-console.log('Big O Complexity Validation:\n');
+    const complexityPassed = complexityValidations.filter(v => v.isCorrect).length;
+    const complexityTotal = complexityValidations.length;
 
-let complexityPassed = 0;
-let complexityTotal = 0;
+    // Render results with Ink
+    await renderTestResults({
+        title: 'Running Group Anagrams Tests',
+        subtitle: 'Testing Solution (character frequency counting approach)',
+        tests: testResults,
+        complexity: {
+            validations: complexityValidations,
+            passed: complexityPassed,
+            total: complexityTotal
+        }
+    });
 
-// Validate Solution complexity
-complexityTotal += 2;
-if (validateComplexity(
-    'Solution',
-    SOLUTION_COMPLEXITY.time,
-    CORRECT_COMPLEXITY.solution.time,
-    'Time'
-)) complexityPassed++;
+    // Exit with appropriate code
+    const failed = testResults.filter(t => !t.passed).length;
+    const allTestsPassed = failed === 0;
+    const allComplexityCorrect = complexityPassed === complexityTotal;
 
-if (validateComplexity(
-    'Solution',
-    SOLUTION_COMPLEXITY.space,
-    CORRECT_COMPLEXITY.solution.space,
-    'Space'
-)) complexityPassed++;
-
-console.log(`\n${'─'.repeat(50)}`);
-console.log(`Big O Complexity: ${complexityPassed}/${complexityTotal} correct`);
-
-// Final Summary
-console.log(`\n${'='.repeat(50)}`);
-console.log('FINAL SUMMARY:');
-console.log(`  Algorithm Tests: ${passed}/${passed + failed} passed`);
-console.log(`  Complexity Analysis: ${complexityPassed}/${complexityTotal} correct`);
-
-const allTestsPassed = failed === 0;
-const allComplexityCorrect = complexityPassed === complexityTotal;
-
-if (allTestsPassed && allComplexityCorrect) {
-    console.log('\n✓ All tests and complexity analysis passed!');
-    process.exit(0);
-} else {
-    if (!allTestsPassed) console.log('✗ Some algorithm tests failed');
-    if (!allComplexityCorrect) console.log('✗ Some complexity answers are incorrect');
-    process.exit(1);
+    if (allTestsPassed && allComplexityCorrect) {
+        process.exit(0);
+    } else {
+        process.exit(1);
+    }
 }
+
+// Run the tests
+main().catch(error => {
+    console.error('Error running tests:', error);
+    process.exit(1);
+});
 

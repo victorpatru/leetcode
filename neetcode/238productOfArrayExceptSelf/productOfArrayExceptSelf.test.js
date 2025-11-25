@@ -2,7 +2,8 @@
 const { Solution, SOLUTION_COMPLEXITY } = require('./productOfArrayExceptSelf.template.js');
 
 // Import shared Big O validation utilities
-const { validateComplexity } = require('../../utils/bigOValidator.js');
+const { validateComplexityResult } = require('../../utils/bigOValidator.js');
+const { renderTestResults } = require('../../utils/testRenderer.js');
 
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
@@ -23,160 +24,178 @@ function arraysEqual(arr1, arr2) {
 }
 
 function runTest(testName, nums, expected, solution) {
-    const result = solution.productExceptSelf(nums);
-
-    if (result === undefined) {
-        console.log(`✗ ${testName}`);
-        console.log(`  Input:    nums = ${JSON.stringify(nums)}`);
-        console.log(`  Expected: ${JSON.stringify(expected)}`);
-        console.log(`  Got:      undefined`);
-        return false;
+    let result, passed;
+    let error = null;
+    
+    try {
+        result = solution.productExceptSelf(nums);
+        
+        if (result === undefined) {
+            passed = false;
+            error = {
+                Input: `nums = ${JSON.stringify(nums)}`,
+                Expected: JSON.stringify(expected),
+                Got: 'undefined'
+            };
+        } else {
+            passed = arraysEqual(result, expected);
+            if (!passed) {
+                error = {
+                    Input: `nums = ${JSON.stringify(nums)}`,
+                    Expected: JSON.stringify(expected),
+                    Got: JSON.stringify(result)
+                };
+            }
+        }
+    } catch (e) {
+        passed = false;
+        error = {
+            Input: `nums = ${JSON.stringify(nums)}`,
+            Expected: JSON.stringify(expected),
+            Error: e.message,
+            Stack: e.stack
+        };
     }
-
-    const passed = arraysEqual(result, expected);
-    console.log(`${passed ? '✓' : '✗'} ${testName}`);
-    if (!passed) {
-        console.log(`  Input:    nums = ${JSON.stringify(nums)}`);
-        console.log(`  Expected: ${JSON.stringify(expected)}`);
-        console.log(`  Got:      ${JSON.stringify(result)}`);
-    }
-    return passed;
+    
+    return {
+        name: testName,
+        passed,
+        error
+    };
 }
 
 // Run all tests
-console.log('Running Product of Array Except Self Tests...\n');
-console.log('Testing Solution (prefix and postfix approach):\n');
+async function main() {
+    const solution = new Solution();
+    const testResults = [];
 
-const solution = new Solution();
-let passed = 0;
-let failed = 0;
+    // Test 1: Example 1 from problem description
+    testResults.push(runTest(
+        'Test 1: example 1',
+        [1, 2, 3, 4],
+        [24, 12, 8, 6],
+        solution
+    ));
 
-// Test 1: Example 1 from problem description
-if (runTest(
-    'Test 1: example 1',
-    [1, 2, 3, 4],
-    [24, 12, 8, 6],
-    solution
-)) passed++; else failed++;
+    // Test 2: Example 2 from problem description
+    testResults.push(runTest(
+        'Test 2: example 2 - with zero',
+        [-1, 1, 0, -3, 3],
+        [0, 0, 9, 0, 0],
+        solution
+    ));
 
-// Test 2: Example 2 from problem description
-if (runTest(
-    'Test 2: example 2 - with zero',
-    [-1, 1, 0, -3, 3],
-    [0, 0, 9, 0, 0],
-    solution
-)) passed++; else failed++;
+    // Test 3: Two elements
+    testResults.push(runTest(
+        'Test 3: two elements',
+        [2, 3],
+        [3, 2],
+        solution
+    ));
 
-// Test 3: Two elements
-if (runTest(
-    'Test 3: two elements',
-    [2, 3],
-    [3, 2],
-    solution
-)) passed++; else failed++;
+    // Test 4: All positive numbers
+    testResults.push(runTest(
+        'Test 4: all positive numbers',
+        [1, 2, 3],
+        [6, 3, 2],
+        solution
+    ));
 
-// Test 4: All positive numbers
-if (runTest(
-    'Test 4: all positive numbers',
-    [1, 2, 3],
-    [6, 3, 2],
-    solution
-)) passed++; else failed++;
+    // Test 5: With negative numbers
+    testResults.push(runTest(
+        'Test 5: with negative numbers',
+        [-1, -2, -3],
+        [6, 3, 2],
+        solution
+    ));
 
-// Test 5: With negative numbers
-if (runTest(
-    'Test 5: with negative numbers',
-    [-1, -2, -3],
-    [6, 3, 2],
-    solution
-)) passed++; else failed++;
+    // Test 6: Mixed positive and negative
+    testResults.push(runTest(
+        'Test 6: mixed positive and negative',
+        [-1, 2, -3, 4],
+        [-24, 12, -8, 6],
+        solution
+    ));
 
-// Test 6: Mixed positive and negative
-if (runTest(
-    'Test 6: mixed positive and negative',
-    [-1, 2, -3, 4],
-    [-24, 12, -8, 6],
-    solution
-)) passed++; else failed++;
+    // Test 7: Single zero
+    testResults.push(runTest(
+        'Test 7: single zero',
+        [1, 0, 3, 4],
+        [0, 12, 0, 0],
+        solution
+    ));
 
-// Test 7: Single zero
-if (runTest(
-    'Test 7: single zero',
-    [1, 0, 3, 4],
-    [0, 12, 0, 0],
-    solution
-)) passed++; else failed++;
+    // Test 8: Multiple zeros
+    testResults.push(runTest(
+        'Test 8: multiple zeros',
+        [0, 0, 2, 3],
+        [0, 0, 0, 0],
+        solution
+    ));
 
-// Test 8: Multiple zeros
-if (runTest(
-    'Test 8: multiple zeros',
-    [0, 0, 2, 3],
-    [0, 0, 0, 0],
-    solution
-)) passed++; else failed++;
+    // Test 9: All ones
+    testResults.push(runTest(
+        'Test 9: all ones',
+        [1, 1, 1, 1],
+        [1, 1, 1, 1],
+        solution
+    ));
 
-// Test 9: All ones
-if (runTest(
-    'Test 9: all ones',
-    [1, 1, 1, 1],
-    [1, 1, 1, 1],
-    solution
-)) passed++; else failed++;
+    // Test 10: Large values
+    testResults.push(runTest(
+        'Test 10: larger array',
+        [1, 2, 3, 4, 5],
+        [120, 60, 40, 30, 24],
+        solution
+    ));
 
-// Test 10: Large values
-if (runTest(
-    'Test 10: larger array',
-    [1, 2, 3, 4, 5],
-    [120, 60, 40, 30, 24],
-    solution
-)) passed++; else failed++;
+    // Big O Complexity Validation
+    const complexityValidations = [];
+    
+    complexityValidations.push(validateComplexityResult(
+        'Solution',
+        SOLUTION_COMPLEXITY.time,
+        CORRECT_COMPLEXITY.solution.time,
+        'Time'
+    ));
 
-// Summary
-console.log(`\n${'='.repeat(50)}`);
-console.log(`Tests Passed: ${passed}/${passed + failed}`);
-console.log(`Tests Failed: ${failed}/${passed + failed}`);
+    complexityValidations.push(validateComplexityResult(
+        'Solution',
+        SOLUTION_COMPLEXITY.space,
+        CORRECT_COMPLEXITY.solution.space,
+        'Space'
+    ));
 
-// Big O Complexity Validation
-console.log(`\n${'='.repeat(50)}`);
-console.log('Big O Complexity Validation:\n');
+    const complexityPassed = complexityValidations.filter(v => v.isCorrect).length;
+    const complexityTotal = complexityValidations.length;
 
-let complexityPassed = 0;
-let complexityTotal = 0;
+    // Render results with Ink
+    await renderTestResults({
+        title: 'Running Product of Array Except Self Tests',
+        subtitle: 'Testing Solution (prefix and postfix approach)',
+        tests: testResults,
+        complexity: {
+            validations: complexityValidations,
+            passed: complexityPassed,
+            total: complexityTotal
+        }
+    });
 
-// Validate Solution complexity
-complexityTotal += 2;
-if (validateComplexity(
-    'Solution',
-    SOLUTION_COMPLEXITY.time,
-    CORRECT_COMPLEXITY.solution.time,
-    'Time'
-)) complexityPassed++;
+    // Exit with appropriate code
+    const failed = testResults.filter(t => !t.passed).length;
+    const allTestsPassed = failed === 0;
+    const allComplexityCorrect = complexityPassed === complexityTotal;
 
-if (validateComplexity(
-    'Solution',
-    SOLUTION_COMPLEXITY.space,
-    CORRECT_COMPLEXITY.solution.space,
-    'Space'
-)) complexityPassed++;
-
-console.log(`\n${'─'.repeat(50)}`);
-console.log(`Big O Complexity: ${complexityPassed}/${complexityTotal} correct`);
-
-// Final Summary
-console.log(`\n${'='.repeat(50)}`);
-console.log('FINAL SUMMARY:');
-console.log(`  Algorithm Tests: ${passed}/${passed + failed} passed`);
-console.log(`  Complexity Analysis: ${complexityPassed}/${complexityTotal} correct`);
-
-const allTestsPassed = failed === 0;
-const allComplexityCorrect = complexityPassed === complexityTotal;
-
-if (allTestsPassed && allComplexityCorrect) {
-    console.log('\n✓ All tests and complexity analysis passed!');
-    process.exit(0);
-} else {
-    if (!allTestsPassed) console.log('✗ Some algorithm tests failed');
-    if (!allComplexityCorrect) console.log('✗ Some complexity answers are incorrect');
-    process.exit(1);
+    if (allTestsPassed && allComplexityCorrect) {
+        process.exit(0);
+    } else {
+        process.exit(1);
+    }
 }
+
+// Run the tests
+main().catch(error => {
+    console.error('Error running tests:', error);
+    process.exit(1);
+});
 
