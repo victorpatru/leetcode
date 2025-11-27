@@ -8,8 +8,8 @@ const { renderTestResults } = require('../../utils/testRenderer.js');
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
     solution: {
-        time: 'O(m*n)', // m = number of strings, n = length of longest string
-        space: 'O(m*n)'  // m = number of strings, n = length of longest string
+        time: 'O(n*m)', // n = number of strings, m = length of longest string
+        space: 'O(n*m)'  // n = number of strings, m = length of longest string
     }
 };
 
@@ -39,11 +39,11 @@ function arraysEqual(arr1, arr2) {
 function runTest(testName, strs, expected, solution) {
     let result, passed;
     let error = null;
-    
+
     try {
         result = solution.groupAnagrams(strs);
         passed = arraysEqual(result, expected);
-        
+
         if (!passed) {
             error = {
                 Input: `strs = ${JSON.stringify(strs)}`,
@@ -60,7 +60,7 @@ function runTest(testName, strs, expected, solution) {
             Stack: e.stack
         };
     }
-    
+
     return {
         name: testName,
         passed,
@@ -155,7 +155,7 @@ async function main() {
 
     // Big O Complexity Validation
     const complexityValidations = [];
-    
+
     complexityValidations.push(validateComplexityResult(
         'Solution',
         SOLUTION_COMPLEXITY.time,
