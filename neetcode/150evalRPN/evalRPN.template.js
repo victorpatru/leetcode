@@ -1,0 +1,50 @@
+/**
+ * Evaluate Reverse Polish Notation
+ *
+ * You are given an array of strings tokens that represents a valid arithmetic expression
+ * in Reverse Polish Notation.
+ *
+ * Return the integer that represents the evaluation of the expression.
+ *
+ * The operands may be integers or the results of other operations.
+ * The operators include '+', '-', '*', and '/'.
+ * Assume that division between integers always truncates toward zero.
+ *
+ * @example
+ * // Example 1:
+ * // Input: tokens = ["1","2","+","3","*","4","-"]
+ * // Output: 5
+ * // Explanation: ((1 + 2) * 3) - 4 = 5
+ *
+ * @constraints
+ * - 1 <= tokens.length <= 1000
+ * - tokens[i] is "+", "-", "*", or "/", or a string representing an integer in the range [-100, 100]
+ * 
+ * Solution Using stack approach
+ * Hint: Use a stack to store operands, when encountering an operator, pop two operands,
+ * perform the operation, and push the result back
+ */
+
+class Solution {
+    /**
+     * @param {string[]} tokens
+     * @return {number}
+     */
+    evalRPN(tokens) {
+        // TODO: implement
+    }
+}
+
+/**
+ * TODO: Fill in your Big O analysis below
+ */
+const SOLUTION_COMPLEXITY = {
+    time: '',
+    space: ''
+};
+
+// Export for testing
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { Solution, SOLUTION_COMPLEXITY };
+}
+
