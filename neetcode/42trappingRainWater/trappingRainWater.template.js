@@ -25,6 +25,9 @@ class Solution {
      * @return {number}
      */
     trap(height) {
+        if (!height || height.length === 0) {
+            return 0;
+        }
         // TODO: implement
     }
 }
