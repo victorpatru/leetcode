@@ -4,7 +4,7 @@
     "description": "LeetCode problem solutions with prettified test output",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Run individual test files with: node <test-file>.test.js\""
+        "test": "node run-test.js"
     },
     "keywords": [
         "leetcode",
