@@ -5,25 +5,23 @@ class Solution {
      * @return {number}
      */
     evalRPN(tokens) {
-        const stack = [];
-        for (const t of tokens) {
-            if (t === '+' || t === '-' || t === '*' || t === '/') {
-                const b = stack.pop();   // second operand
-                const a = stack.pop();   // first operand
-                if (t === '+') {
-                    stack.push(a + b);
-                } else if (t === '-') {
-                    stack.push(a - b);
-                } else if (t === '*') {
-                    stack.push(a * b);
-                } else { // '/'
-                    stack.push(Math.trunc(a / b));
-                }
+        const stack = []
+
+        for (const c of tokens) {
+            if (["+", "-", "*", "/"].includes(c)) {
+                const b = stack.pop()
+                const a = stack.pop()
+
+                if (c === "+") stack.push(a + b);
+                else if (c === "-") stack.push(a - b);
+                else if (c === "*") stack.push(a * b);
+                else stack.push(Math.trunc(a / b))
             } else {
-                stack.push(Number(t)); // or parseInt(t)
+                stack.push(parseInt(c))
             }
         }
-        return stack.pop();
+
+        return stack.pop()
     }
 }
 
