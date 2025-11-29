@@ -56,7 +56,7 @@ const ComplexityResult = ({ validation }) => {
     const { solutionName, type, userAnswer, correctAnswer, isCorrect, isFilled } = validation;
     const statusColor = isCorrect ? 'green' : isFilled ? 'red' : 'yellow';
     const statusIcon = isCorrect ? '✓' : isFilled ? '✗' : '⚠';
-    const statusText = isCorrect ? 'Correct!' : isFilled ? 'Incorrect' : 'Not filled in';
+    const statusText = isCorrect ? 'Correct!' : isFilled ? 'Incorrect' : 'Not filled in - please complete this';
     
     return React.createElement(Box, { flexDirection: 'column', marginBottom: 1 },
         React.createElement(Box, null,
@@ -74,7 +74,7 @@ const ComplexityResult = ({ validation }) => {
                     userAnswer || '(not filled in)'
                 )
             ),
-            React.createElement(Box, null,
+            isFilled && React.createElement(Box, null,
                 React.createElement(Text, { color: 'gray', dimColor: true }, 'Correct answer:'),
                 React.createElement(Text, null, ' '),
                 React.createElement(Text, { color: 'green' }, correctAnswer)
