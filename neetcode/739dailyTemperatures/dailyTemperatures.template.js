@@ -23,8 +23,6 @@
  * - 1 <= temperatures[i] <= 100
  * 
  * Solution Using stack approach
- * Hint: Use a stack to store indices of temperatures. For each temperature, while the current
- * temperature is warmer than the temperature at the top of the stack, pop and calculate the difference.
  */
 
 class Solution {
