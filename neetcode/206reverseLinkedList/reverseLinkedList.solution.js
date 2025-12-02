@@ -15,8 +15,8 @@ class Solution {
      * @return {ListNode}
      */
     reverseList(head) {
-        let prev = null;
-        let curr = head;
+        let prev = null, curr = head;
+
         while (curr) {
             let temp = curr.next;
             curr.next = prev;
