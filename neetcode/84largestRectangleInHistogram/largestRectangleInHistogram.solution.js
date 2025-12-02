@@ -12,7 +12,7 @@ class Solution {
             let start = i;
             while (
                 stack.length > 0 &&
-                stack[stack.length - 1][1] > heights[i]
+                stack.at(-1)[1] > heights[i]
             ) {
                 const [index, height] = stack.pop();
                 maxArea = Math.max(maxArea, height * (i - index));
