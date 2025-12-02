@@ -18,7 +18,7 @@ class Solution {
         let fast = head;
         let slow = head;
 
-        while (fast !== null && fast.next !== null) {
+        while (fast && fast.next) {
             fast = fast.next.next;
             slow = slow.next;
 
