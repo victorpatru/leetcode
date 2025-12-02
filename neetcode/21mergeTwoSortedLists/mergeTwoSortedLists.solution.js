@@ -27,7 +27,7 @@ class Solution {
                 tail.next = list2;
                 list2 = list2.next;
             }
-            tail = tail.next;
+            tail = tail.next; // Move tail to the node we just added.
         }
 
         if (list1) {
