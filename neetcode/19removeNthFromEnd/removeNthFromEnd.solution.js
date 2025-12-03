@@ -19,11 +19,13 @@ class Solution {
         let slow = dummyHead;
         let fast = head;
 
+        // move fast n steps ahead
         while (n > 0) {
             fast = fast.next;
             n--;
         }
 
+        // move both pointers until fast hits end
         while (fast) {
             slow = slow.next;
             fast = fast.next;
