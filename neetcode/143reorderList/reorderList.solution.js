@@ -27,22 +27,22 @@ class Solution {
         slow.next = null; // break the list
         let prev = null;
         while (second) {
-            const next = second.next;
+            const tmp = second.next;
             second.next = prev;
             prev = second;
-            second = next;
+            second = tmp;
         }
 
         // 3. Merge two halves
         let first = head;
         second = prev;
         while (second) {
-            const next1 = first.next;
-            const next2 = second.next;
+            const tmp1 = first.next;
+            const tmp2 = second.next;
             first.next = second;
-            second.next = next1;
-            first = next1;
-            second = next2;
+            second.next = tmp1;
+            first = tmp1;
+            second = tmp2;
         }
     }
 }
