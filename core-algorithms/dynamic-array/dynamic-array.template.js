@@ -61,7 +61,7 @@ class DynamicArray {
 
     /**
      * Remove the last element in the array.
-     * @returns {number}
+     * @returns {number} return the element at the end of the array
      */
     popback() {
         // TODO: implement
