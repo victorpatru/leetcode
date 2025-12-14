@@ -16,9 +16,9 @@ const CORRECT_COMPLEXITY = {
 // Helper function to create a linked list from array representation
 function createLinkedList(arr) {
     if (!arr || arr.length === 0) return null;
-    
+
     const nodes = arr.map(([val]) => new Node(val));
-    
+
     for (let i = 0; i < arr.length; i++) {
         if (i < arr.length - 1) {
             nodes[i].next = nodes[i + 1];
@@ -28,18 +28,18 @@ function createLinkedList(arr) {
             nodes[i].random = nodes[randomIdx];
         }
     }
-    
+
     return nodes[0];
 }
 
 // Helper function to convert linked list to array representation
 function linkedListToArray(head) {
     if (!head) return [];
-    
+
     const result = [];
     const nodeMap = new Map();
     let idx = 0;
-    
+
     // First pass: map nodes to indices
     let cur = head;
     while (cur) {
@@ -47,7 +47,7 @@ function linkedListToArray(head) {
         idx++;
         cur = cur.next;
     }
-    
+
     // Second pass: build array representation
     cur = head;
     while (cur) {
@@ -55,7 +55,7 @@ function linkedListToArray(head) {
         result.push([cur.val, randomIdx]);
         cur = cur.next;
     }
-    
+
     return result;
 }
 
@@ -63,20 +63,20 @@ function linkedListToArray(head) {
 function isDeepCopy(original, copy) {
     if (!original && !copy) return true;
     if (!original || !copy) return false;
-    
+
     const originalNodes = new Set();
     let cur = original;
     while (cur) {
         originalNodes.add(cur);
         cur = cur.next;
     }
-    
+
     cur = copy;
     while (cur) {
         if (originalNodes.has(cur)) return false;
         cur = cur.next;
     }
-    
+
     return true;
 }
 
@@ -89,10 +89,10 @@ function runTest(testName, arr, expected, solution) {
         const head = createLinkedList(arr);
         const copiedHead = solution.copyRandomList(head);
         result = linkedListToArray(copiedHead);
-        
+
         const isCorrect = JSON.stringify(result) === JSON.stringify(expected);
         const isDeep = isDeepCopy(head, copiedHead);
-        
+
         passed = isCorrect && isDeep;
 
         if (!passed) {
