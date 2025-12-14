@@ -18,8 +18,7 @@ class Solution {
 
         let curr = head;
         while (curr) {
-            const copy = new Node(curr.val);
-            oldToCopy.set(curr, copy);
+            oldToCopy.set(curr, new Node(curr.val));
             curr = curr.next;
         }
 
