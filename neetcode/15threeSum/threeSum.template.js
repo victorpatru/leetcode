@@ -34,7 +34,6 @@
  * - 3 <= nums.length <= 1000
  * - -10^5 <= nums[i] <= 10^5
  *
- * Solution: Using sorting + two pointers
  */
 class Solution {
     /**
