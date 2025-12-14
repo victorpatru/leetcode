@@ -16,9 +16,7 @@
  * @constraints
  * - 0 <= The length of the list <= 1000
  * 
- * Solution Using iterative approach
- * Hint: Use two pointers (prev and curr) to traverse the list and reverse links
- */
+*/
 
 /**
  * Definition for singly-linked list.
