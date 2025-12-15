@@ -59,7 +59,7 @@ class LRUCache {
 
     /**
      * @param {number} key
-     * @return {number}
+     * @return {number} number or -1 if it doesn't exist
      */
     get(key) {
         // TODO: Implement
