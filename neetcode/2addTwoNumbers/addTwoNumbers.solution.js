@@ -41,7 +41,7 @@ class Solution {
  */
 const SOLUTION_COMPLEXITY = {
     time: 'O(n + m)',
-    space: 'O(max(m, n))'
+    space: 'O(max(n, m))'
 };
 
 // Export for testing
