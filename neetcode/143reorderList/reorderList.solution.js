@@ -16,7 +16,7 @@ class Solution {
     reorderList(head) {
         // 1. Find middle (slow = mid)
         let slow = head;
-        let fast = head;
+        let fast = head.next;
         while (fast && fast.next) {
             slow = slow.next;
             fast = fast.next.next;
