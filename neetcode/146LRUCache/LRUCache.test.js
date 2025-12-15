@@ -8,13 +8,17 @@ const { renderTestResults } = require('../../utils/testRenderer.js');
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
     solution: {
+        overall: {
+            time: 'O(1)',  // Per operation
+            space: 'O(n)'  // Total space for the data structure
+        },
         get: {
             time: 'O(1)',
-            space: 'O(1)'
+            space: 'O(1)'  // Auxiliary space per operation
         },
         put: {
             time: 'O(1)',
-            space: 'O(1)'
+            space: 'O(1)'  // Auxiliary space per operation
         }
     }
 };
@@ -198,6 +202,20 @@ async function main() {
 
     // Big O Complexity Validation
     const complexityValidations = [];
+
+    complexityValidations.push(validateComplexityResult(
+        'Overall',
+        SOLUTION_COMPLEXITY.overall.time,
+        CORRECT_COMPLEXITY.solution.overall.time,
+        'Time'
+    ));
+
+    complexityValidations.push(validateComplexityResult(
+        'Overall',
+        SOLUTION_COMPLEXITY.overall.space,
+        CORRECT_COMPLEXITY.solution.overall.space,
+        'Space'
+    ));
 
     complexityValidations.push(validateComplexityResult(
         'get()',

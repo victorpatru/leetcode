@@ -91,20 +91,40 @@ class LRUCache {
 }
 
 /**
- * Time Complexity: 
- * - get: O(1) - HashMap lookup and list operations are O(1)
- * - put: O(1) - HashMap operations and list operations are O(1)
+ * Time Complexity: O(1) for both get() and put() operations
  * 
- * Space Complexity: O(capacity) - storing at most capacity nodes in HashMap and list
+ * get(key):
+ * - HashMap lookup: O(1) average case
+ * - remove() operation: O(1) - we have direct reference to the node
+ * - insert() operation: O(1) - we insert at a fixed position (before right dummy)
+ * - Total: O(1)
+ * 
+ * put(key, value):
+ * - HashMap lookup (if key exists): O(1) average case
+ * - remove() operation (if updating): O(1) - direct node reference
+ * - HashMap set: O(1) average case
+ * - insert() operation: O(1) - insert at fixed position
+ * - Eviction check and removal (if over capacity): O(1) - remove from fixed position (left.next)
+ * - Total: O(1)
+ * 
+ * Space Complexity: O(n) where n is the capacity
+ * - HashMap stores at most n key-value pairs: O(n)
+ * - Doubly linked list stores at most n nodes: O(n)
+ * - Two dummy nodes (left, right): O(1)
+ * - Total: O(n)
  */
 const SOLUTION_COMPLEXITY = {
+    overall: {
+        time: 'O(1)',  // Per operation
+        space: 'O(n)'  // Total space for the data structure
+    },
     get: {
         time: 'O(1)',
-        space: 'O(1)'
+        space: 'O(1)'  // Auxiliary space per get operation
     },
     put: {
         time: 'O(1)',
-        space: 'O(1)'
+        space: 'O(1)'  // Auxiliary space per put operation
     }
 };
 

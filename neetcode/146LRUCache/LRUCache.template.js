@@ -79,13 +79,17 @@ class LRUCache {
  * TODO: Fill in your Big O analysis below
  */
 const SOLUTION_COMPLEXITY = {
+    overall: {
+        time: '',  // Per operation time complexity
+        space: ''  // Total space for the data structure
+    },
     get: {
         time: '',
-        space: ''
+        space: ''  // Auxiliary space per get operation
     },
     put: {
         time: '',
-        space: ''
+        space: ''  // Auxiliary space per put operation
     }
 };
 
