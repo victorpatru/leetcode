@@ -36,19 +36,6 @@
  * - 0 <= value <= 1000
  */
 
-class Node {
-    /**
-     * @param {number} key
-     * @param {number} val
-     */
-    constructor(key, val) {
-        this.key = key;
-        this.val = val;
-        this.prev = null;
-        this.next = null;
-    }
-}
-
 class LRUCache {
     /**
      * @param {number} capacity
