@@ -22,7 +22,6 @@
  * - 1 <= temperatures.length <= 1000
  * - 1 <= temperatures[i] <= 100
  * 
- * Solution Using stack approach
  */
 
 class Solution {
