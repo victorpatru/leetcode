@@ -30,11 +30,7 @@ class Solution {
             tail = tail.next; // Move tail to the node we just added.
         }
 
-        if (list1) {
-            tail.next = list1;
-        } else {
-            tail.next = list2;
-        }
+        tail.next = list1 ?? list2
 
         return dummyHead.next;
     }
