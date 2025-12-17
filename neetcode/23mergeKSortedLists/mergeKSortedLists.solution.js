@@ -23,7 +23,7 @@ class Solution {
             const mergedLists = [];
             for (let i = 0; i < lists.length; i += 2) {
                 const l1 = lists[i];
-                const l2 = i + 1 < lists.length ? lists[i + 1] : null;
+                const l2 = lists[i + 1] ?? null;
                 mergedLists.push(this.mergeList(l1, l2));
             }
             lists = mergedLists;
@@ -38,8 +38,8 @@ class Solution {
      * @return {ListNode}
      */
     mergeList(l1, l2) {
-        const dummy = new ListNode(0);
-        let curr = dummy;
+        const dummyHead = new ListNode(0);
+        let curr = dummyHead;
 
         while (l1 && l2) {
             if (l1.val <= l2.val) {
@@ -52,8 +52,8 @@ class Solution {
             curr = curr.next;
         }
 
-        curr.next = l1 ? l1 : l2;
-        return dummy.next;
+        curr.next = l1 ?? l2;
+        return dummyHead.next;
     }
 }
 
@@ -82,7 +82,7 @@ class Solution {
  * - Total: O(k)
  */
 const SOLUTION_COMPLEXITY = {
-    time: 'O(n*log(k))',
+    time: 'O(nlog(k))',
     space: 'O(k)'
 };
 
