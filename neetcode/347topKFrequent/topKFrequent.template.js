@@ -23,9 +23,6 @@
  * - 1 <= k <= number of distinct elements in nums
  */
 
-/**
- * Solution 1: Using bucket sort approach
- */
 class Solution {
     /**
      * @param {number[]} nums
