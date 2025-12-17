@@ -82,7 +82,7 @@ class Solution {
  * - Total: O(k)
  */
 const SOLUTION_COMPLEXITY = {
-    time: 'O(nlog(k))',
+    time: 'O(nlogk)',
     space: 'O(k)'
 };
 
