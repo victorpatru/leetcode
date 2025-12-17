@@ -21,8 +21,6 @@
  * - 2 <= height.length <= 1000
  * - 0 <= height[i] <= 1000
  * 
- * Solution Using two pointers approach
- * Hint: Use two pointers starting from both ends, move the pointer with smaller height
  */
 
 class Solution {
