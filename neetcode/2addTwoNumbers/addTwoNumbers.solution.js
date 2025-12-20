@@ -21,9 +21,9 @@ class Solution {
             const v1 = l1 ? l1.val : 0;
             const v2 = l2 ? l2.val : 0;
 
-            let val = v1 + v2 + carry;
-            carry = Math.floor(val / 10);
-            val = val % 10;
+            const sum = v1 + v2 + carry;
+            carry = Math.floor(sum / 10);
+            const val = sum % 10;
             curr.next = new ListNode(val);
 
             curr = curr.next;
