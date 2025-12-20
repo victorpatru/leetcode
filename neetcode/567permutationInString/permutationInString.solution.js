@@ -12,8 +12,8 @@ class Solution {
         let s1Count = new Array(26).fill(0);
         let s2Count = new Array(26).fill(0);
         for (let i = 0; i < s1.length; i++) {
-            s1Count[s1.charCodeAt(i) - 97]++;
-            s2Count[s2.charCodeAt(i) - 97]++;
+            s1Count[s1.charCodeAt(i) - "a".charCodeAt(0)]++;
+            s2Count[s2.charCodeAt(i) - "a".charCodeAt(0)]++;
         }
 
         let matches = 0;
@@ -29,7 +29,7 @@ class Solution {
                 return true;
             }
 
-            let index = s2.charCodeAt(r) - 97;
+            let index = s2.charCodeAt(r) - "a".charCodeAt(0);
             s2Count[index]++;
             if (s1Count[index] === s2Count[index]) {
                 matches++;
@@ -37,7 +37,7 @@ class Solution {
                 matches--;
             }
 
-            index = s2.charCodeAt(l) - 97;
+            index = s2.charCodeAt(l) - "a".charCodeAt(0);
             s2Count[index]--;
             if (s1Count[index] === s2Count[index]) {
                 matches++;
