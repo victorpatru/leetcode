@@ -30,20 +30,20 @@ class Solution {
             }
 
             // Add the new right character and update matches
-            let index = s2.charCodeAt(r) - "a".charCodeAt(0);
-            s2Count[index]++;
-            if (s2Count[index] === s1Count[index]) {
+            const rightIndex = s2.charCodeAt(r) - "a".charCodeAt(0);
+            s2Count[rightIndex]++;
+            if (s2Count[rightIndex] === s1Count[rightIndex]) {
                 matches++;
-            } else if (s2Count[index] === s1Count[index] + 1) {
+            } else if (s2Count[rightIndex] === s1Count[rightIndex] + 1) {
                 matches--;
             }
 
             // Remove the left character and update matches
-            index = s2.charCodeAt(l) - "a".charCodeAt(0);
-            s2Count[index]--;
-            if (s2Count[index] === s1Count[index]) {
+            const leftIndex = s2.charCodeAt(l) - "a".charCodeAt(0);
+            s2Count[leftIndex]--;
+            if (s2Count[leftIndex] === s1Count[leftIndex]) {
                 matches++;
-            } else if (s2Count[index] === s1Count[index] - 1) {
+            } else if (s2Count[leftIndex] === s1Count[leftIndex] - 1) {
                 matches--;
             }
             l++;
