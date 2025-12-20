@@ -20,7 +20,6 @@
  * - 0 <= s.length <= 1000
  * - s may consist of printable ASCII characters.
  *
- * Solution: Sliding Window approach
  */
 class Solution {
     /**
