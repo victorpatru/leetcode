@@ -29,19 +29,21 @@ class Solution {
                 return true;
             }
 
+            // Add the new right character and update matches
             let index = s2.charCodeAt(r) - "a".charCodeAt(0);
             s2Count[index]++;
-            if (s1Count[index] === s2Count[index]) {
+            if (s2Count[index] === s1Count[index]) {
                 matches++;
-            } else if (s1Count[index] + 1 === s2Count[index]) {
+            } else if (s2Count[index] === s1Count[index] + 1) {
                 matches--;
             }
 
+            // Remove the left character and update matches
             index = s2.charCodeAt(l) - "a".charCodeAt(0);
             s2Count[index]--;
-            if (s1Count[index] === s2Count[index]) {
+            if (s2Count[index] === s1Count[index]) {
                 matches++;
-            } else if (s1Count[index] - 1 === s2Count[index]) {
+            } else if (s2Count[index] === s1Count[index] - 1) {
                 matches--;
             }
             l++;
