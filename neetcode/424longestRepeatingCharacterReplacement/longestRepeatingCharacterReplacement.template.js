@@ -21,6 +21,7 @@
  *
  * @constraints
  * - 1 <= s.length <= 1000
+ * - "s" consists of only uppercase English letters
  * - 0 <= k <= s.length
  */
 class Solution {
