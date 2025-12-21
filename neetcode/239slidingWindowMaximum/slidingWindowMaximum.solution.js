@@ -8,24 +8,24 @@ class Solution {
      */
     maxSlidingWindow(nums, k) {
         const output = new Array(nums.length - k + 1);
-        const queue = new Deque();
+        const deque = new Deque();
         let l = 0;
 
         for (let r = 0; r < nums.length; r++) {
             // Remove smaller values from the back
-            while (queue.size() > 0 && nums[r] > nums[queue.back()]) {
-                queue.popBack();
+            while (deque.size() > 0 && nums[r] > nums[deque.back()]) {
+                deque.popBack();
             }
-            queue.pushBack(r);
+            deque.pushBack(r);
 
             // Remove elements outside the window (left of the window)
-            while (queue.size() > 0 && r - k + 1 > queue.front()) {
-                queue.popFront();
+            while (deque.size() > 0 && r - k + 1 > deque.front()) {
+                deque.popFront();
             }
 
             // Once window size is reached, record the max
             if (r - k + 1 >= 0) {
-                output[l] = nums[queue.front()];
+                output[l] = nums[deque.front()];
                 l++;
             }
         }
