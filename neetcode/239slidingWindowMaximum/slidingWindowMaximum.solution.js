@@ -7,12 +7,11 @@ class Solution {
      * @return {number[]}
      */
     maxSlidingWindow(nums, k) {
-        const n = nums.length;
-        const output = new Array(n - k + 1);
+        const output = new Array(nums.length - k + 1);
         const queue = new Deque();
-        let l = 0, r = 0;
+        let l = 0;
 
-        while (r < n) {
+        for (let r = 0; r < nums.length; r++) {
             // Remove smaller values from the back
             while (queue.size() > 0 && nums[r] > nums[queue.back()]) {
                 queue.popBack();
@@ -29,7 +28,6 @@ class Solution {
                 output[l] = nums[queue.front()];
                 l++;
             }
-            r++;
         }
 
         return output;
