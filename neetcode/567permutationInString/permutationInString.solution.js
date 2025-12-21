@@ -7,7 +7,7 @@ class Solution {
     checkInclusion(s1, s2) {
         if (s1.length > s2.length) return false;
 
-        let s1Count = new Array(26).fill(0), s2Count = new Array(26).fill(0);
+        const s1Count = new Array(26).fill(0), s2Count = new Array(26).fill(0);
         const A = "a".charCodeAt(0)
 
         for (let i = 0; i < s1.length; i++) {
