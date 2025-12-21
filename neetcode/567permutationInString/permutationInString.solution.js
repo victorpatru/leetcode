@@ -5,19 +5,18 @@ class Solution {
      * @return {boolean}
      */
     checkInclusion(s1, s2) {
-        if (s1.length > s2.length) {
-            return false;
-        }
+        if (s1.length > s2.length) return false;
 
-        let s1Count = new Array(26).fill(0);
-        let s2Count = new Array(26).fill(0);
+        let s1Count = new Array(26).fill(0), s2Count = new Array(26).fill(0);
+        const A = "a".charCodeAt(0)
+
         for (let i = 0; i < s1.length; i++) {
-            s1Count[s1.charCodeAt(i) - "a".charCodeAt(0)]++;
-            s2Count[s2.charCodeAt(i) - "a".charCodeAt(0)]++;
+            s1Count[s1.charCodeAt(i) - A]++;
+            s2Count[s2.charCodeAt(i) - A]++;
         }
 
         let matches = 0;
-        for (let i = 0; i < 26; i++) {
+        for (let i = 0; i < s1Count.length; i++) {
             if (s1Count[i] === s2Count[i]) {
                 matches++;
             }
@@ -30,7 +29,7 @@ class Solution {
             }
 
             // Add the new right character and update matches
-            const rightIndex = s2.charCodeAt(r) - "a".charCodeAt(0);
+            const rightIndex = s2.charCodeAt(r) - A;
             s2Count[rightIndex]++;
             if (s2Count[rightIndex] === s1Count[rightIndex]) {
                 matches++;
@@ -39,7 +38,7 @@ class Solution {
             }
 
             // Remove the left character and update matches
-            const leftIndex = s2.charCodeAt(l) - "a".charCodeAt(0);
+            const leftIndex = s2.charCodeAt(l) - A;
             s2Count[leftIndex]--;
             if (s2Count[leftIndex] === s1Count[leftIndex]) {
                 matches++;
@@ -48,6 +47,7 @@ class Solution {
             }
             l++;
         }
+
         return matches === 26;
     }
 }
