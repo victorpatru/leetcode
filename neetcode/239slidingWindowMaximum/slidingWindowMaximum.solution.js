@@ -19,12 +19,12 @@ class Solution {
             deque.pushBack(r);
 
             // Remove elements outside the window (left of the window)
-            while (deque.size() > 0 && r - k + 1 > deque.front()) {
-                deque.popFront();
+            if (l > deque.front()) {
+                deque.popFront()
             }
 
             // Once window size is reached, record the max
-            if (r - k + 1 >= 0) {
+            if (r + 1 >= k) {
                 output[l] = nums[deque.front()];
                 l++;
             }
