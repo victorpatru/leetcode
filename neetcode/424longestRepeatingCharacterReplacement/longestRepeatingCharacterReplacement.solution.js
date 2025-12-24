@@ -6,9 +6,8 @@ class Solution {
      */
     characterReplacement(s, k) {
         const count = {};
-        let res = 0;
+        let l = 0, res = 0;
 
-        let l = 0;
         for (let r = 0; r < s.length; r++) {
             count[s[r]] = (count[s[r]] ?? 0) + 1;
 
