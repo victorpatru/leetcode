@@ -67,17 +67,9 @@ class LRUCache {
  */
 const SOLUTION_COMPLEXITY = {
     overall: {
-        time: '',  // Per operation time complexity
+        time: '',  // for each put() and get() operation
         space: ''  // Total space for the data structure
     },
-    get: {
-        time: '',
-        space: ''  // Auxiliary space per get operation
-    },
-    put: {
-        time: '',
-        space: ''  // Auxiliary space per put operation
-    }
 };
 
 // Export for testing

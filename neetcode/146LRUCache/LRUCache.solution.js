@@ -118,14 +118,6 @@ const SOLUTION_COMPLEXITY = {
         time: 'O(1)',  // Per operation
         space: 'O(n)'  // Total space for the data structure
     },
-    get: {
-        time: 'O(1)',
-        space: 'O(1)'  // Auxiliary space per get operation
-    },
-    put: {
-        time: 'O(1)',
-        space: 'O(1)'  // Auxiliary space per put operation
-    }
 };
 
 // Export for testing

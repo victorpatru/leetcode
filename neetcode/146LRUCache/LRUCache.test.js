@@ -12,14 +12,6 @@ const CORRECT_COMPLEXITY = {
             time: 'O(1)',  // Per operation
             space: 'O(n)'  // Total space for the data structure
         },
-        get: {
-            time: 'O(1)',
-            space: 'O(1)'  // Auxiliary space per operation
-        },
-        put: {
-            time: 'O(1)',
-            space: 'O(1)'  // Auxiliary space per operation
-        }
     }
 };
 
