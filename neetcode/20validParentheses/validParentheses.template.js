@@ -29,8 +29,6 @@
  * @constraints
  * - 1 <= s.length <= 1000
  * 
- * Solution Using stack approach
- * Hint: Use a stack to track opening brackets and match them with closing brackets
  */
 
 class Solution {
