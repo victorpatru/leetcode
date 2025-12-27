@@ -11,7 +11,7 @@ const { renderTestResults } = require('../../utils/testRenderer.js');
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
     time: 'O(n)',
-    space: 'O(min(n,set))'
+    space: 'O(min(n,charset))'
 };
 
 // Test helper function

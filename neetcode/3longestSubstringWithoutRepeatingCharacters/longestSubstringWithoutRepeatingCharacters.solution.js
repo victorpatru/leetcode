@@ -25,12 +25,12 @@ class Solution {
 /**
  * Time Complexity: O(n)
  * Space Complexity: O(min(n,m))
- * Where n is the length of the string and m is the number of unique characters
+ * Where n is the length of the string and m is the size of the character set (e.g., 26 for lowercase letters, ~128 for ASCII, ~65k+ for Unicode)
  */
 
 const SOLUTION_COMPLEXITY = {
     time: 'O(n)',
-    space: 'O(min(n,m))'
+    space: 'O(min(n,charset))'
 };
 
 // Export for testing
