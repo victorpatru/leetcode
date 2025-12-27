@@ -6,8 +6,7 @@ class Solution {
      * @return {number}
      */
     search(nums, target) {
-        let l = 0;
-        let r = nums.length - 1;
+        let l = 0, r = nums.length - 1;
 
         while (l <= r) {
             const m = l + Math.floor((r - l) / 2);
