@@ -43,11 +43,10 @@ class LRUCache {
      * @param {Node} node
      */
     insert(node) {
-        const prevNode = this.right.prev;
-        prevNode.next = node;
-        node.prev = prevNode;
-        node.next = this.right;
-        this.right.prev = node;
+        node.next = this.right
+        node.prev = this.right.prev
+        this.right.prev.next = node
+        this.right.prev = node
     }
 
     /**
