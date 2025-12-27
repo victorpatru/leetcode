@@ -24,13 +24,13 @@ class Solution {
 
 /**
  * Time Complexity: O(n)
- * Space Complexity: O(m)
+ * Space Complexity: O(min(n,m))
  * Where n is the length of the string and m is the number of unique characters
  */
 
 const SOLUTION_COMPLEXITY = {
     time: 'O(n)',
-    space: 'O(min(n,set))'
+    space: 'O(min(n,m))'
 };
 
 // Export for testing
