@@ -30,8 +30,6 @@
  * - pop, top and getMin will always be called on non-empty stacks
  * - At most 3 * 10^4 calls will be made to push, pop, top, and getMin
  * 
- * Solution Using two stacks approach
- * Hint: Use a separate stack to track the minimum value at each level
  */
 
 class MinStack {
