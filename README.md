@@ -1,6 +1,6 @@
 # DSA Mastery
 
-Neetcode 150 practice with structured learning workflow.
+My masterplan for getting good at Data Structures and Algorithms: pair the Neetcode 150 list with Anki for long term retention
 
 ## Quick Start
 
