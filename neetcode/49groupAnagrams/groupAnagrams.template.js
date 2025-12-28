@@ -27,8 +27,6 @@
  * - 0 <= strs[i].length <= 100
  * - strs[i] is made up of lowercase English letters
  * 
- * Solution Using character frequency counting (hash map approach)
- * Hint: Create a key from the character count array (by joining it)
  */
 
 class Solution {
