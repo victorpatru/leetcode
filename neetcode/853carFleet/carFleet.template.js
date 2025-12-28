@@ -41,9 +41,6 @@
  * - 0 <= position[i] < target
  * - All the values of position are unique.
  * 
- * Solution Using stack approach
- * Hint: Sort cars by position (descending), calculate time to reach target. Use a stack to track
- * fleets. If a car's time is <= the car ahead, it will catch up and form a fleet.
  */
 
 class Solution {
