@@ -20,9 +20,6 @@
  * - 1 <= tokens.length <= 1000
  * - tokens[i] is "+", "-", "*", or "/", or a string representing an integer in the range [-100, 100]
  * 
- * Solution Using stack approach
- * Hint: Use a stack to store operands, when encountering an operator, pop two operands,
- * perform the operation, and push the result back
  */
 
 class Solution {
