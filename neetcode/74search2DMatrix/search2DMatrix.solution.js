@@ -5,14 +5,12 @@ class Solution {
      * @return {boolean}
      */
     searchMatrix(matrix, target) {
-        const ROWS = matrix.length;
-        const COLS = matrix[0].length;
+        const ROWS = matrix.length, COLS = matrix[0].length;
 
-        let top = 0;
-        let bot = ROWS - 1;
+        let top = 0, bot = ROWS - 1;
         while (top <= bot) {
             const midRow = bot + Math.floor((top - bot) / 2);
-            if (target > matrix[midRow][COLS - 1]) {
+            if (target > matrix[midRow].at(-1)) {
                 top = midRow + 1;
             } else if (target < matrix[midRow][0]) {
                 bot = midRow - 1;
@@ -25,8 +23,7 @@ class Solution {
             return false;
         }
         const row = bot + Math.floor((top - bot) / 2);
-        let l = 0;
-        let r = COLS - 1;
+        let l = 0, r = COLS - 1;
         while (l <= r) {
             const m = l + Math.floor((r - l) / 2);
             if (target > matrix[row][m]) {
