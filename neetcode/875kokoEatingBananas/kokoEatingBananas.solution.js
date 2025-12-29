@@ -5,8 +5,7 @@ class Solution {
      * @return {number}
      */
     minEatingSpeed(piles, h) {
-        let l = 1;
-        let r = Math.max(...piles);
+        let l = 1, r = Math.max(...piles);
         let res = r;
 
         while (l <= r) {
