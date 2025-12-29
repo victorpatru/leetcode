@@ -8,7 +8,7 @@ const { renderTestResults } = require('../../utils/testRenderer.js');
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
     solution: {
-        time: 'O(nlog(m))', // Binary search on eating rates O(log m), iterate through piles O(n)
+        time: 'O(nlogm)', // Binary search on eating rates O(log m), iterate through piles O(n)
         space: 'O(1)'  // constant extra space
     }
 };
