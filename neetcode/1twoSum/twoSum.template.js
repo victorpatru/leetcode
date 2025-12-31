@@ -29,10 +29,8 @@
  * - 2 <= nums.length <= 1000
  * - -10,000,000 <= nums[i] <= 10,000,000
  * - -10,000,000 <= target <= 10,000,000
- *
- * Solution: Using hash map (one-pass approach)
  */
-class SolutionHashMap {
+class Solution {
     /**
      * @param {number[]} nums
      * @param {number} target
@@ -46,13 +44,13 @@ class SolutionHashMap {
 /**
  * TODO: Fill in your Big O analysis below
  */
-const SOLUTION_HASH_MAP_COMPLEXITY = {
+const SOLUTION_COMPLEXITY = {
     time: '',
     space: ''
 };
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { SolutionHashMap, SOLUTION_HASH_MAP_COMPLEXITY };
+    module.exports = { Solution, SOLUTION_COMPLEXITY };
 }
 

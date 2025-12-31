@@ -1,5 +1,5 @@
 // Import the solution
-const { SolutionHashMap, SOLUTION_HASH_MAP_COMPLEXITY } = require('./twoSum.template.js');
+const { Solution, SOLUTION_COMPLEXITY } = require('./twoSum.template.js');
 
 // Import shared Big O validation utilities
 const { validateComplexityResult } = require('../../utils/bigOValidator.js');
@@ -7,7 +7,7 @@ const { renderTestResults } = require('../../utils/testRenderer.js');
 
 // Correct Big O answers for validation
 const CORRECT_COMPLEXITY = {
-    hashMap: {
+    solution: {
         time: 'O(n)',
         space: 'O(n)'
     }
@@ -17,11 +17,11 @@ const CORRECT_COMPLEXITY = {
 function runTest(testName, nums, target, expected, solution) {
     let result, passed;
     let error = null;
-    
+
     try {
         result = solution.twoSum(nums, target);
         passed = JSON.stringify(result) === JSON.stringify(expected);
-        
+
         if (!passed) {
             error = {
                 Input: `nums = ${JSON.stringify(nums)}, target = ${target}`,
@@ -38,7 +38,7 @@ function runTest(testName, nums, target, expected, solution) {
             Stack: e.stack
         };
     }
-    
+
     return {
         name: testName,
         passed,
@@ -48,7 +48,7 @@ function runTest(testName, nums, target, expected, solution) {
 
 // Run all tests
 async function main() {
-    const solutionHashMap = new SolutionHashMap();
+    const solution = new Solution();
     const testResults = [];
 
     // Test 1: Example 1 from problem description
@@ -57,7 +57,7 @@ async function main() {
         [3, 4, 5, 6],
         7,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Test 2: Example 2 from problem description
@@ -66,7 +66,7 @@ async function main() {
         [4, 5, 6],
         10,
         [0, 2],
-        solutionHashMap
+        solution
     ));
 
     // Test 3: Example 3 from problem description
@@ -75,7 +75,7 @@ async function main() {
         [5, 5],
         10,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Test 4: Small array
@@ -84,7 +84,7 @@ async function main() {
         [2, 7],
         9,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Test 5: Negative numbers
@@ -93,7 +93,7 @@ async function main() {
         [-1, -2, -3, -4, -5],
         -8,
         [2, 4],
-        solutionHashMap
+        solution
     ));
 
     // Test 6: Mixed positive and negative
@@ -102,7 +102,7 @@ async function main() {
         [-1, 2, 3, 4, 5],
         1,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Test 7: Zero in array
@@ -111,7 +111,7 @@ async function main() {
         [0, 4, 3, 0],
         0,
         [0, 3],
-        solutionHashMap
+        solution
     ));
 
     // Test 8: Target is zero
@@ -120,7 +120,7 @@ async function main() {
         [-3, 4, 3, 90],
         0,
         [0, 2],
-        solutionHashMap
+        solution
     ));
 
     // Test 9: Large numbers
@@ -129,7 +129,7 @@ async function main() {
         [1000000, 2000000, 3000000],
         5000000,
         [1, 2],
-        solutionHashMap
+        solution
     ));
 
     // Test 10: Solution at end of array
@@ -138,7 +138,7 @@ async function main() {
         [1, 2, 3, 4, 5],
         9,
         [3, 4],
-        solutionHashMap
+        solution
     ));
 
     // Test 11: Solution at beginning of array
@@ -147,7 +147,7 @@ async function main() {
         [1, 2, 3, 4, 5],
         3,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Test 12: Multiple pairs exist (hash map returns first found pair)
@@ -156,7 +156,7 @@ async function main() {
         [1, 2, 3, 4, 5],
         6,
         [1, 3],
-        solutionHashMap
+        solution
     ));
 
     // Test 13: Duplicate values (different indices)
@@ -165,7 +165,7 @@ async function main() {
         [3, 3, 3],
         6,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Test 14: Larger array
@@ -174,23 +174,23 @@ async function main() {
         [2, 7, 11, 15, 3, 6, 8, 9],
         9,
         [0, 1],
-        solutionHashMap
+        solution
     ));
 
     // Big O Complexity Validation
     const complexityValidations = [];
-    
+
     complexityValidations.push(validateComplexityResult(
-        'SolutionHashMap',
-        SOLUTION_HASH_MAP_COMPLEXITY.time,
-        CORRECT_COMPLEXITY.hashMap.time,
+        'Solution',
+        SOLUTION_COMPLEXITY.time,
+        CORRECT_COMPLEXITY.solution.time,
         'Time'
     ));
 
     complexityValidations.push(validateComplexityResult(
-        'SolutionHashMap',
-        SOLUTION_HASH_MAP_COMPLEXITY.space,
-        CORRECT_COMPLEXITY.hashMap.space,
+        'Solution',
+        SOLUTION_COMPLEXITY.space,
+        CORRECT_COMPLEXITY.solution.space,
         'Space'
     ));
 
