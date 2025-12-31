@@ -7,8 +7,8 @@ class ListNode {
 
 class LinkedList {
     constructor() {
-        this.head = new ListNode(-1)
-        this.tail = this.head
+        this.dummyHead = new ListNode(-1)
+        this.dummyTail = this.dummyHead
     }
 
     /**
@@ -17,7 +17,7 @@ class LinkedList {
      */
     get(index) {
         let i = 0
-        let curr = this.head.next
+        let curr = this.dummyHead.next
         while (curr) {
             if (i === index) {
                 return curr.val
@@ -34,10 +34,10 @@ class LinkedList {
      */
     insertHead(val) {
         const newNode = new ListNode(val)
-        newNode.next = this.head.next
-        this.head.next = newNode
+        newNode.next = this.dummyHead.next
+        this.dummyHead.next = newNode
         if (!newNode.next) {
-            this.tail = newNode
+            this.dummyTail = newNode
         }
     }
 
@@ -46,8 +46,8 @@ class LinkedList {
      * @return {void}
      */
     insertTail(val) {
-        this.tail.next = new ListNode(val)
-        this.tail = this.tail.next
+        this.dummyTail.next = new ListNode(val)
+        this.dummyTail = this.dummyTail.next
     }
 
     /**
@@ -56,7 +56,7 @@ class LinkedList {
      */
     remove(index) {
         let i = 0
-        let curr = this.head
+        let curr = this.dummyHead
 
         while (i < index && curr) {
             i++
@@ -64,8 +64,8 @@ class LinkedList {
         }
 
         if (curr && curr.next) {
-            if (curr.next == this.tail) {
-                this.tail = curr
+            if (curr.next == this.dummyTail) {
+                this.dummyTail = curr
             }
             curr.next = curr.next.next
             return true
@@ -78,7 +78,7 @@ class LinkedList {
      * @return {number[]}
      */
     getValues() {
-        let curr = this.head.next
+        let curr = this.dummyHead.next
         let res = []
         while (curr) {
             res.push(curr.val)
