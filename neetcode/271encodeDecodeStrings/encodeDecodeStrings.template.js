@@ -22,9 +22,6 @@
  * - strs[i] contains only UTF-8 characters.
  */
 
-/**
- * Solution: Using length prefix with delimiter
- */
 class Solution {
     /**
      * @param {string[]} strs
