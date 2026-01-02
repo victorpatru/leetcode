@@ -9,7 +9,7 @@ const { renderTestResults } = require('../../utils/testRenderer.js');
 const CORRECT_COMPLEXITY = {
     solution: {
         time: 'O(logn)', // O(1) for set(), O(log n) for get() where n is number of timestamps per key
-        space: 'O(m*n)'  // m = number of keys, n = average number of timestamps per key
+        space: 'O(n*m)'  // n = number of keys, m = average number of timestamps per key
     }
 };
 
