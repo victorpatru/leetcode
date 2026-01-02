@@ -16,12 +16,15 @@ const fs = require('fs');
 const { spawn } = require('child_process');
 
 const problemPath = process.argv[2];
+const additionalArgs = process.argv.slice(3); // Get all arguments after the problem path
 
 if (!problemPath) {
     console.error('Error: No problem path provided');
     console.error('\nUsage:');
-    console.error('  node run-test.js <problem-number-or-name>');
+    console.error('  node run-test.js <problem-number-or-name> [test-args...]');
     console.error('  node run-test.js 739                    # Just the LeetCode number');
+    console.error('  node run-test.js 104 --recursive        # Test with arguments');
+    console.error('  node run-test.js 104 --bfs              # Test only BFS');
     console.error('  node run-test.js neetcode/739dailyTemperatures');
     console.error('  node run-test.js 739dailyTemperatures');
     console.error('  npm test -- 739');
@@ -175,8 +178,8 @@ if (!fs.existsSync(resolvedTestFile)) {
 const testDir = path.dirname(resolvedTestFile);
 process.chdir(testDir);
 
-// Run the test file
-const testProcess = spawn('node', [path.basename(resolvedTestFile)], {
+// Run the test file with any additional arguments passed through
+const testProcess = spawn('node', [path.basename(resolvedTestFile), ...additionalArgs], {
     stdio: 'inherit',
     shell: false
 });
