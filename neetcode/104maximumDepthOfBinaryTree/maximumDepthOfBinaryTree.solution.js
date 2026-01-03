@@ -29,21 +29,21 @@ class SolutionIterative {
      * @return {number}
      */
     maxDepth(root) {
+        if (!root) return 0;
+
         const stack = [[root, 1]];
-        let res = 0;
+        let max = 0;
 
         while (stack.length > 0) {
-            const current = stack.pop();
-            const node = current[0];
-            const depth = current[1];
+            const [node, depth] = stack.pop();
 
-            if (node !== null) {
-                res = Math.max(res, depth);
-                stack.push([node.left, depth + 1]);
-                stack.push([node.right, depth + 1]);
-            }
+            max = Math.max(max, depth);
+
+            if (node.left) stack.push([node.left, depth + 1]);
+            if (node.right) stack.push([node.right, depth + 1]);
         }
-        return res;
+
+        return max;
     }
 }
 
