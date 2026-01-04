@@ -24,7 +24,6 @@
  * - -1000 <= numbers[i] <= 1000
  * - -1000 <= target <= 1000
  *
- * Solution: Using two pointers (sorted array)
  */
 class Solution {
     /**
