@@ -20,8 +20,7 @@
  * @constraints
  * - s and t consist of lowercase English letters
  *
- * Solution: Using character frequency counting (hash map approach)
- */
+ *  */
 class SolutionFrequencyMap {
     /**
      * @param {string} s
